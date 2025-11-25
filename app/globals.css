@@ -3,9 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Updated with user's custom blue/purple palette while preserving all default shadcn/ui tokens */
 :root {
-  /* User's custom luxury blue/purple palette */
   --background: #f3f4f4;
   --foreground: #2e335c;
   --card: #ffffff;
