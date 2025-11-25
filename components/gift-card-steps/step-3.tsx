@@ -1,118 +1,195 @@
-"use client"
+"use client";
 
-import { useTranslations } from "next-intl"
+import { Mail, MessageCircle, MessageSquare, Phone, User } from "lucide-react";
+
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface Step3Props {
   recipientInfo: {
-    name: string
-    email: string
-    phone: string
-    message: string
-    deliveryMethod: string
-  }
-  setRecipientInfo: (info: any) => void
-  onNext: () => void
-  onPrev: () => void
+    name: string;
+    email: string;
+    phone: string;
+    message: string;
+    deliveryMethod: string;
+  };
+  setRecipientInfo: (info: any) => void;
+  onNext: () => void;
+  onPrev: () => void;
 }
 
-export default function GiftCardStep3({ recipientInfo, setRecipientInfo, onNext, onPrev }: Step3Props) {
-  const t = useTranslations("giftCards")
+export default function GiftCardStep3({
+  recipientInfo,
+  setRecipientInfo,
+  onNext,
+  onPrev,
+}: Step3Props) {
+  const t = useTranslations("giftCards");
+
+  const inputClasses =
+    "w-full pl-10 pr-4 py-3 border border-border rounded-xl bg-background/50 focus:bg-background text-foreground font-light focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200";
 
   return (
-    <div className="space-y-8">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="space-y-8"
+    >
       <div>
-        <h3 className="text-2xl font-light mb-6 text-foreground">{t("recipientDetails")}</h3>
+        <h3 className="text-2xl font-light mb-6 text-foreground text-center">
+          {t("recipientDetails")}
+        </h3>
 
-        <div className="space-y-4 mb-6">
-          <div>
-            <label className="block text-sm font-light text-foreground/70 mb-2">{t("recipientName")}</label>
-            <input
-              type="text"
-              value={recipientInfo.name}
-              onChange={(e) => setRecipientInfo({ ...recipientInfo, name: e.target.value })}
-              className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground font-light"
-              placeholder={t("recipientNamePlaceholder")}
-            />
+        <div className="space-y-6 mb-8">
+          {/* Name Input */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground/80 ml-1">
+              {t("recipientName")}
+            </label>
+            <div className="relative">
+              <User className="absolute left-3 top-3.5 text-muted-foreground w-5 h-5" />
+              <input
+                type="text"
+                value={recipientInfo.name}
+                onChange={(e) =>
+                  setRecipientInfo({ ...recipientInfo, name: e.target.value })
+                }
+                className={inputClasses}
+                placeholder={t("recipientNamePlaceholder")}
+              />
+            </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-light text-foreground/70 mb-2">{t("deliveryMethod")}</label>
-            <div className="flex gap-4">
-              {["email", "whatsapp"].map((method) => (
-                <label key={method} className="flex items-center gap-2 cursor-pointer">
+          {/* Delivery Method Selection */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground/80 ml-1">
+              {t("deliveryMethod")}
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              {["email", "whatsapp"].map((method) => {
+                const isSelected = recipientInfo.deliveryMethod === method;
+                return (
+                  <div
+                    key={method}
+                    onClick={() =>
+                      setRecipientInfo({
+                        ...recipientInfo,
+                        deliveryMethod: method,
+                      })
+                    }
+                    className={`cursor-pointer flex flex-col items-center justify-center gap-3 p-4 rounded-xl border-2 transition-all duration-200 ${
+                      isSelected
+                        ? "border-primary bg-primary/5 text-primary shadow-sm"
+                        : "border-border bg-background/50 text-muted-foreground hover:border-primary/50 hover:bg-background"
+                    }`}
+                  >
+                    {method === "email" ? (
+                      <Mail className={isSelected ? "text-primary" : ""} />
+                    ) : (
+                      <MessageCircle
+                        className={isSelected ? "text-primary" : ""}
+                      />
+                    )}
+                    <span className="font-medium capitalize text-sm">
+                      {method === "email" ? t("email") : t("whatsapp")}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Dynamic Contact Input */}
+          <motion.div
+            key={recipientInfo.deliveryMethod}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {recipientInfo.deliveryMethod === "email" ? (
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground/80 ml-1">
+                  {t("recipientEmail")}
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-3.5 text-muted-foreground w-5 h-5" />
                   <input
-                    type="radio"
-                    value={method}
-                    checked={recipientInfo.deliveryMethod === method}
+                    type="email"
+                    value={recipientInfo.email}
                     onChange={(e) =>
                       setRecipientInfo({
                         ...recipientInfo,
-                        deliveryMethod: e.target.value,
+                        email: e.target.value,
                       })
                     }
-                    className="w-4 h-4"
+                    className={inputClasses}
+                    placeholder={t("recipientEmailPlaceholder")}
                   />
-                  <span className="font-light text-foreground capitalize">
-                    {method === "email" ? t("email") : t("whatsapp")}
-                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground/80 ml-1">
+                  {t("recipientPhone")}
                 </label>
-              ))}
-            </div>
-          </div>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-3.5 text-muted-foreground w-5 h-5" />
+                  <input
+                    type="tel"
+                    value={recipientInfo.phone}
+                    onChange={(e) =>
+                      setRecipientInfo({
+                        ...recipientInfo,
+                        phone: e.target.value,
+                      })
+                    }
+                    className={inputClasses}
+                    placeholder={t("recipientPhonePlaceholder")}
+                  />
+                </div>
+              </div>
+            )}
+          </motion.div>
 
-          {recipientInfo.deliveryMethod === "email" && (
-            <div>
-              <label className="block text-sm font-light text-foreground/70 mb-2">{t("recipientEmail")}</label>
-              <input
-                type="email"
-                value={recipientInfo.email}
-                onChange={(e) => setRecipientInfo({ ...recipientInfo, email: e.target.value })}
-                className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground font-light"
-                placeholder={t("recipientEmailPlaceholder")}
+          {/* Message Input */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground/80 ml-1">
+              {t("personalMessage")}
+            </label>
+            <div className="relative">
+              <MessageSquare className="absolute left-3 top-3.5 text-muted-foreground w-5 h-5" />
+              <textarea
+                value={recipientInfo.message}
+                onChange={(e) =>
+                  setRecipientInfo({
+                    ...recipientInfo,
+                    message: e.target.value,
+                  })
+                }
+                className={`${inputClasses} min-h-[120px] resize-none`}
+                placeholder={t("personalMessagePlaceholder")}
               />
             </div>
-          )}
-
-          {recipientInfo.deliveryMethod === "whatsapp" && (
-            <div>
-              <label className="block text-sm font-light text-foreground/70 mb-2">{t("recipientPhone")}</label>
-              <input
-                type="tel"
-                value={recipientInfo.phone}
-                onChange={(e) => setRecipientInfo({ ...recipientInfo, phone: e.target.value })}
-                className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground font-light"
-                placeholder={t("recipientPhonePlaceholder")}
-              />
-            </div>
-          )}
-
-          <div>
-            <label className="block text-sm font-light text-foreground/70 mb-2">{t("personalMessage")}</label>
-            <textarea
-              value={recipientInfo.message}
-              onChange={(e) => setRecipientInfo({ ...recipientInfo, message: e.target.value })}
-              className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground font-light resize-none"
-              placeholder={t("personalMessagePlaceholder")}
-              rows={4}
-            />
           </div>
         </div>
       </div>
 
-      <div className="flex gap-4">
+      {/* Buttons */}
+      <div className="flex gap-4 pt-4 border-t border-border/50">
         <button
           onClick={onPrev}
-          className="flex-1 px-6 py-3 border-2 border-gold text-gold font-medium rounded-full hover:bg-gold/10 transition-colors"
+          className="cursor-pointer flex-1 px-6 py-3 border border-border text-foreground/70 font-medium rounded-full hover:bg-accent/5 hover:text-foreground hover:border-primary/50 transition-all"
         >
           {t("back")}
         </button>
         <button
           onClick={onNext}
-          className="flex-1 px-6 py-3 bg-gold text-charcoal font-medium rounded-full hover:bg-gold/90 transition-colors"
+          className="cursor-pointer flex-1 px-6 py-3 bg-primary text-primary-foreground font-medium rounded-full hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 transition-all"
         >
           {t("reviewOrder")}
         </button>
       </div>
-    </div>
-  )
+    </motion.div>
+  );
 }

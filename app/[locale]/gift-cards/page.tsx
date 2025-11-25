@@ -1,9 +1,21 @@
 import GiftCardWizard from "@/components/gift-card-wizard";
+import Image from "next/image";
 
 export default function GiftCardsPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="pt-20">
+    <main className="min-h-screen bg-background text-foreground relative">
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/gift-cards.jpeg"
+          alt="Luxury gift background"
+          fill
+          className="object-cover opacity-20"
+          priority
+          quality={100}
+        />
+      </div>
+
+      <div className="relative z-10 pt-32 pb-20">
         <GiftCardWizard />
       </div>
     </main>

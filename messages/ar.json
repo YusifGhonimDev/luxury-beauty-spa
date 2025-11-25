@@ -14,6 +14,8 @@
   "services": {
     "title": "خدماتنا",
     "description": "معالجات مختارة مصممة لصحتك وتجديدك الأمثل",
+    "sar": "ر.س",
+    "min": "دقيقة",
     "categories": {
       "hair": "الشعر",
       "nails": "الأظافر",
@@ -66,14 +68,16 @@
     "sendMessage": "إرسال الرسالة",
     "phonePlaceholder": "+1 (555) 123-4567",
     "emailPlaceholder": "بريدك@مثال.com",
-    "messagePlaceholder": "رسالتك..."
+    "messagePlaceholder": "رسالتك...",
+    "subtitle": "نسعد بتواصلك معنا"
   },
   "giftCards": {
+    "termsAgreement": "بالمتابعة، فإنك توافق على شروط الخدمة الخاصة بنا.",
+    "sar": "ر.س",
     "title": "بطاقات الهدايا الرقمية",
     "subtitle": "اهدِ هدية الصحة والفخامة",
     "selectValue": "اختر قيمة بطاقة الهدية",
     "orEnterCustom": "أو أدخل مبلغاً مخصصاً:",
-    "customPlaceholder": "$",
     "nextStep": "الخطوة التالية",
     "chooseDesign": "اختر التصميم",
     "back": "السابق",
@@ -89,7 +93,7 @@
     "recipientEmail": "بريد المستلم الإلكتروني",
     "recipientEmailPlaceholder": "recipient@example.com",
     "recipientPhone": "هاتف المستلم",
-    "recipientPhonePlaceholder": "+1 (555) 000-0000",
+    "recipientPhonePlaceholder": "+966 50 123 4567",
     "personalMessage": "رسالة شخصية (اختيارية)",
     "personalMessagePlaceholder": "أضف رسالة خاصة...",
     "reviewOrder": "مراجعة الطلب",

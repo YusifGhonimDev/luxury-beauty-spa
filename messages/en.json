@@ -14,6 +14,8 @@
   "services": {
     "title": "Our Services",
     "description": "Curated treatments designed for your ultimate wellness and rejuvenation",
+    "sar": "SAR",
+    "min": "min",
     "categories": {
       "hair": "Hair",
       "nails": "Nails",
@@ -66,14 +68,16 @@
     "sendMessage": "Send Message",
     "phonePlaceholder": "+1 (555) 123-4567",
     "emailPlaceholder": "your.email@example.com",
-    "messagePlaceholder": "Your message..."
+    "messagePlaceholder": "Your message...",
+    "subtitle": "We'd love to hear from you"
   },
   "giftCards": {
+    "termsAgreement": "By proceeding, you agree to our Terms of Service.",
+    "sar": "SAR",
     "title": "Digital Gift Cards",
     "subtitle": "Give the gift of wellness and luxury",
     "selectValue": "Select Gift Card Value",
     "orEnterCustom": "Or enter custom amount:",
-    "customPlaceholder": "$",
     "nextStep": "Next Step",
     "chooseDesign": "Choose Design",
     "back": "Back",
@@ -89,7 +93,7 @@
     "recipientEmail": "Recipient Email",
     "recipientEmailPlaceholder": "recipient@example.com",
     "recipientPhone": "Recipient Phone",
-    "recipientPhonePlaceholder": "+1 (555) 000-0000",
+    "recipientPhonePlaceholder": "+966 50 123 4567",
     "personalMessage": "Personal Message (optional)",
     "personalMessagePlaceholder": "Add a special message...",
     "reviewOrder": "Review Order",

@@ -117,7 +117,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main className="grow">{children}</main>
+          {children}
           <Footer />
         </NextIntlClientProvider>
         <Analytics />
