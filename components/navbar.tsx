@@ -1,32 +1,35 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { useLocale, useTranslations } from "next-intl"
-import { useRouter, usePathname } from "next/navigation"
+import { Menu, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const t = useTranslations("nav")
-  const locale = useLocale()
-  const router = useRouter()
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const toggleLanguage = () => {
-    const newLocale = locale === "en" ? "ar" : "en"
-    const newPathname = pathname.replace(`/${locale}/`, `/${newLocale}/`)
-    router.push(newPathname || `/${newLocale}`)
-  }
+    const newLocale = locale === "en" ? "ar" : "en";
+    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPathname || `/${newLocale}`);
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex-shrink-0">
+          <Link href={`/${locale}`} className="shrink-0">
             <span
-              className={`text-3xl font-serif font-bold tracking-tighter text-primary ${locale === "ar" ? "font-arabic-title" : ""}`}
+              className={`text-3xl font-serif font-bold tracking-tighter text-primary ${
+                locale === "ar" ? "font-arabic-title" : ""
+              }`}
             >
               FUAR
             </span>
@@ -34,16 +37,28 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link href={`/${locale}/about`} className="text-sm font-light hover:text-primary transition-colors">
+            <Link
+              href={`/${locale}/about`}
+              className="text-sm font-light hover:text-primary transition-colors"
+            >
               {t("about")}
             </Link>
-            <Link href={`/${locale}/services`} className="text-sm font-light hover:text-primary transition-colors">
+            <Link
+              href={`/${locale}/services`}
+              className="text-sm font-light hover:text-primary transition-colors"
+            >
               {t("services")}
             </Link>
-            <Link href={`/${locale}/gift-cards`} className="text-sm font-light hover:text-primary transition-colors">
+            <Link
+              href={`/${locale}/gift-cards`}
+              className="text-sm font-light hover:text-primary transition-colors"
+            >
               {t("giftCards")}
             </Link>
-            <Link href={`/${locale}/contact`} className="text-sm font-light hover:text-primary transition-colors">
+            <Link
+              href={`/${locale}/contact`}
+              className="text-sm font-light hover:text-primary transition-colors"
+            >
               {t("contact")}
             </Link>
           </div>
@@ -64,7 +79,11 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <button
+            className="md:hidden p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -102,8 +121,8 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => {
-                toggleLanguage()
-                setIsOpen(false)
+                toggleLanguage();
+                setIsOpen(false);
               }}
               className="w-full text-left text-sm font-light py-2 hover:text-primary transition-colors"
             >
@@ -118,5 +137,5 @@ export default function Navbar() {
         )}
       </div>
     </nav>
-  )
+  );
 }
