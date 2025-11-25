@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "giftCards": "Gift Cards",
+    "contact": "Contact",
+    "bookAppointment": "Book Appointment"
+  },
+  "hero": {
+    "title": "Beyond Beauty, Into Serenity",
+    "subtitle": "Experience the pinnacle of wellness and style at FUAR",
+    "viewServices": "View Services"
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Curated treatments designed for your ultimate wellness and rejuvenation",
+    "categories": {
+      "hair": "Hair",
+      "nails": "Nails",
+      "spa": "Spa",
+      "treatments": "Treatments"
+    },
+    "items": {
+      "haircut": "Haircut & Style",
+      "colorTreatment": "Color Treatment",
+      "balayage": "Balayage",
+      "keratin": "Keratin Treatment",
+      "manicure": "Manicure",
+      "pedicure": "Pedicure",
+      "gelNails": "Gel Nails",
+      "nailArt": "Nail Art",
+      "swedishMassage": "Swedish Massage",
+      "deepTissueMassage": "Deep Tissue Massage",
+      "facial": "Facial",
+      "bodyScrub": "Body Scrub",
+      "antiAging": "Anti-Aging Treatment",
+      "hydraFacial": "HydraFacial",
+      "chemicalPeel": "Chemical Peel",
+      "microdermabrasion": "Microdermabrasion"
+    }
+  },
+  "about": {
+    "title": "About FUAR Beauty Salon & Spa",
+    "story": "Our Story",
+    "storyText": "FUAR Beauty Salon & Spa represents the pinnacle of luxury wellness and aesthetic excellence. Founded with a vision to create sanctuary spaces where beauty, wellness, and tranquility converge, we have established ourselves as a premier destination for discerning individuals seeking transformative beauty and spa experiences.",
+    "philosophy": "Our Philosophy",
+    "philosophyText": "We believe that true beauty radiates from within. Our comprehensive approach combines cutting-edge treatments, time-honored techniques, and personalized care to ensure every client leaves feeling rejuvenated, confident, and radiant. Each service is designed with meticulous attention to detail and an unwavering commitment to excellence.",
+    "whyChooseUs": "Why Choose Us",
+    "reasons": [
+      "Expert therapists and beauty professionals with years of experience",
+      "Premium products and state-of-the-art treatments",
+      "Serene, luxurious environment designed for ultimate relaxation",
+      "Personalized treatment plans tailored to individual needs",
+      "Commitment to sustainability and ethical practices"
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "getInTouch": "Get In Touch",
+    "name": "Name",
+    "emailLabel": "Email",
+    "message": "Message",
+    "sendMessage": "Send Message",
+    "phonePlaceholder": "+1 (555) 123-4567",
+    "emailPlaceholder": "your.email@example.com",
+    "messagePlaceholder": "Your message..."
+  },
+  "footer": {
+    "brand": "FUAR",
+    "tagline": "Where beauty meets serenity",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "follow": "Follow",
+    "copyright": "© 2025 FUAR Beauty Salon & Spa. All rights reserved."
+  }
+}
