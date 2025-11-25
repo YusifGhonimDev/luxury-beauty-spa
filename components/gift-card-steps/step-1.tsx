@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 
 interface Step1Props {
   selectedValue: string
@@ -9,13 +10,15 @@ interface Step1Props {
 }
 
 export default function GiftCardStep1({ selectedValue, setSelectedValue, onNext }: Step1Props) {
+  const t = useTranslations("giftCards")
+
   const values = ["$50", "$100", "$200"]
   const [customValue, setCustomValue] = useState("")
 
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-2xl font-light mb-6 text-foreground">Select Gift Card Value</h3>
+        <h3 className="text-2xl font-light mb-6 text-foreground">{t("selectValue")}</h3>
         <div className="grid md:grid-cols-3 gap-4 mb-6">
           {values.map((value) => (
             <button
@@ -34,10 +37,10 @@ export default function GiftCardStep1({ selectedValue, setSelectedValue, onNext 
         </div>
 
         <div className="flex items-center gap-4 mb-6">
-          <span className="text-foreground/60 font-light">Or enter custom amount:</span>
+          <span className="text-foreground/60 font-light">{t("orEnterCustom")}</span>
           <input
             type="number"
-            placeholder="$"
+            placeholder={t("customPlaceholder")}
             value={customValue}
             onChange={(e) => {
               const val = e.target.value
@@ -54,7 +57,7 @@ export default function GiftCardStep1({ selectedValue, setSelectedValue, onNext 
         onClick={onNext}
         className="w-full px-6 py-3 bg-gold text-charcoal font-medium rounded-full hover:bg-gold/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Next Step
+        {t("nextStep")}
       </button>
     </div>
   )
