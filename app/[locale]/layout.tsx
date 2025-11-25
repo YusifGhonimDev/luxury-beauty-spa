@@ -1,17 +1,22 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { getMessages } from "next-intl/server"
-import { NextIntlClientProvider } from "next-intl"
-import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "@/app/globals.css"
+import "./globals.css";
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+import { Geist, Geist_Mono } from "next/font/google";
+
+import { Analytics } from "@vercel/analytics/next";
+import Footer from "@/components/footer";
+import type { Metadata } from "next";
+import Navbar from "@/components/navbar";
+import { NextIntlClientProvider } from "next-intl";
+import type React from "react";
+import { getMessages } from "next-intl/server";
+
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "FUAR Beauty Salon & Spa | Luxury Wellness",
-  description: "Experience the pinnacle of wellness and style. Luxury beauty salon and spa services.",
+  description:
+    "Experience the pinnacle of wellness and style. Luxury beauty salon and spa services.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -30,28 +35,40 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-}
+};
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ar" }]
+  return [{ locale: "en" }, { locale: "ar" }];
 }
 
 export default async function RootLayout({
   children,
   params,
 }: Readonly<{
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = await params
-  const messages = await getMessages()
-  const isArabic = locale === "ar"
+  const { locale } = await params;
+  const messages = await getMessages();
+  const isArabic = locale === "ar";
 
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"}>
       <head>
-        <link rel="preload" href="/fonts/Cinzel-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/HONORSansArabicUI-L.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          href="/fonts/Cinzel-Regular.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/HONORSansArabicUI-L.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
         <link
           rel="preload"
           href="/fonts/TheYearofTheCamel-Bold.ttf"
@@ -59,7 +76,13 @@ export default async function RootLayout({
           type="font/ttf"
           crossOrigin="anonymous"
         />
-        <link rel="preload" href="/fonts/shree-devanagari-714.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          href="/fonts/shree-devanagari-714.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
         <style>{`
           @font-face {
             font-family: 'Cinzel';
@@ -87,10 +110,18 @@ export default async function RootLayout({
           }
         `}</style>
       </head>
-      <body className={`font-sans antialiased ${isArabic ? "font-arabic-body" : ""}`}>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+      <body
+        className={`font-sans antialiased ${
+          isArabic ? "font-arabic-body" : ""
+        }`}
+      >
+        <NextIntlClientProvider messages={messages}>
+          <Navbar />
+          <main className="grow">{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

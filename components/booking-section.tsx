@@ -1,8 +1,12 @@
+"use client";
+
 export default function BookingSection() {
   const handleWhatsAppBooking = () => {
-    const message = 'Hello FUAR, I would like to book an appointment...';
-    const whatsappUrl = `https://wa.me/123456789?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    const message = "Hello FUAR, I would like to book an appointment...";
+    const whatsappUrl = `https://wa.me/123456789?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
