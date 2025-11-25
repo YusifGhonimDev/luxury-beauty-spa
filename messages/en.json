@@ -113,6 +113,16 @@
     "step3": "Details",
     "step4": "Payment"
   },
+  "booking": {
+    "title": "Ready to Book?",
+    "subtitle": "Choose your preferred booking method",
+    "freshaTitle": "Instant Online Booking",
+    "freshaDescription": "Book directly through our online system",
+    "freshaButton": "Book on Fresha",
+    "whatsappTitle": "Book via WhatsApp",
+    "whatsappDescription": "Chat with our concierge team",
+    "whatsappButton": "Message on WhatsApp"
+  },
   "footer": {
     "brand": "FUAR",
     "tagline": "Where beauty meets serenity",

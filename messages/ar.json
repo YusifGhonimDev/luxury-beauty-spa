@@ -113,6 +113,16 @@
     "step3": "التفاصيل",
     "step4": "الدفع"
   },
+  "booking": {
+    "title": "هل أنت جاهز للحجز؟",
+    "subtitle": "اختر طريقة الحجز المفضلة لديك",
+    "freshaTitle": "الحجز الفوري عبر الإنترنت",
+    "freshaDescription": "احجز مباشرة من خلال نظامنا عبر الإنترنت",
+    "freshaButton": "احجز على Fresha",
+    "whatsappTitle": "الحجز عبر واتساب",
+    "whatsappDescription": "تحدث مع فريق الكونسيرج لدينا",
+    "whatsappButton": "تواصل على واتساب"
+  },
   "footer": {
     "brand": "فوار",
     "tagline": "حيث يلتقي الجمال بالسلام",
