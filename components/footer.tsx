@@ -3,6 +3,7 @@
 import { Instagram, Linkedin, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -21,28 +22,30 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 md:gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3
-              className={`text-2xl font-bold mb-4 ${
-                isArabic ? "font-arabic-title" : "font-serif"
-              }`}
-            >
-              {t("brand")}
-            </h3>
-            <p className="font-light text-primary-foreground/80">
+            <div className="mb-8">
+              <Image
+                src="/logo-white.svg"
+                alt="FUAR"
+                width={280}
+                height={100}
+                className="h-28 w-auto object-contain"
+              />
+            </div>
+            <p className="font-light text-primary-foreground/80 leading-relaxed">
               {t("tagline")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-primary-foreground">
+            <h4 className="font-semibold mb-6 text-primary-foreground uppercase tracking-wider text-sm">
               {t("quickLinks")}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
                 <Link
                   href={`/${locale}/services`}
-                  className="font-light text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="font-light text-primary-foreground/80 hover:text-white transition-colors hover:translate-x-1 inline-block duration-200"
                 >
                   {useTranslations("nav")("services")}
                 </Link>
@@ -50,7 +53,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={`/${locale}/gift-cards`}
-                  className="font-light text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="font-light text-primary-foreground/80 hover:text-white transition-colors hover:translate-x-1 inline-block duration-200"
                 >
                   {useTranslations("nav")("giftCards")}
                 </Link>
@@ -58,7 +61,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={`/${locale}/about`}
-                  className="font-light text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="font-light text-primary-foreground/80 hover:text-white transition-colors hover:translate-x-1 inline-block duration-200"
                 >
                   {useTranslations("nav")("about")}
                 </Link>
@@ -68,33 +71,36 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4 text-primary-foreground">
+            <h4 className="font-semibold mb-6 text-primary-foreground uppercase tracking-wider text-sm">
               {t("contact")}
             </h4>
-            <div className="space-y-2">
+            <div className="space-y-4">
               <a
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                className="flex items-start gap-3 text-primary-foreground/80 hover:text-white transition-colors group"
               >
-                <MapPin size={16} className="mt-1 flex-shrink-0" />
-                <span className="font-light text-sm">
-                  123 Luxury Lane, Wellness City, WC 12345
+                <MapPin
+                  size={20}
+                  className="mt-1 flex-shrink-0 group-hover:text-white transition-colors"
+                />
+                <span className="font-light text-sm leading-relaxed">
+                  123 Wellness Ave, Luxury City
                 </span>
               </a>
-              <p className="font-light text-primary-foreground/80 text-sm">
-                +1 (555) 123-4567
+              <p className="font-light text-primary-foreground/80 text-sm pl-8">
+                +966 50 123 4567
               </p>
-              <p className="font-light text-primary-foreground/80 text-sm">
-                hello@fuar.com
+              <p className="font-light text-primary-foreground/80 text-sm pl-8">
+                hello@fuar-spa.com
               </p>
             </div>
           </div>
 
           {/* Social */}
           <div>
-            <h4 className="font-semibold mb-4 text-primary-foreground">
+            <h4 className="font-semibold mb-6 text-primary-foreground uppercase tracking-wider text-sm">
               {t("follow")}
             </h4>
             <div className="flex gap-4">
@@ -102,7 +108,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                className="bg-primary-foreground/10 p-3 rounded-full text-primary-foreground/80 hover:text-white hover:bg-primary-foreground/20 transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
@@ -111,7 +117,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                className="bg-primary-foreground/10 p-3 rounded-full text-primary-foreground/80 hover:text-white hover:bg-primary-foreground/20 transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
@@ -121,10 +127,24 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-primary-foreground/20 pt-8">
-          <p className="text-center font-light text-primary-foreground/60 text-sm">
+        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-center font-light text-primary-foreground/50 text-sm">
             {t("copyright")}
           </p>
+          <div className="flex gap-6 text-sm font-light text-primary-foreground/50">
+            <Link
+              href="#"
+              className="hover:text-primary-foreground/80 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="#"
+              className="hover:text-primary-foreground/80 transition-colors"
+            >
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

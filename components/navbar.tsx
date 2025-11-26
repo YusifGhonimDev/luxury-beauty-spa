@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -45,22 +46,12 @@ export default function Navbar() {
     router.push(newPathname || `/${newLocale}`);
   };
 
-  // 1. CHECK IF WE ARE ON THE HOME PAGE
-  // The path is usually "/en" or "/ar". If it matches exactly, we are home.
   const isHomePage = pathname === `/${locale}`;
-
-  // 2. LOGIC UPDATE:
-  // The Navbar is "Solid" (White BG, Dark Text) if:
-  // - We have scrolled down (isScrolled)
-  // - The mobile menu is open (isOpen)
-  // - OR... We are NOT on the homepage (!isHomePage).
-  //   (This forces inner pages to always be readable).
   const isSolid = isScrolled || isOpen || !isHomePage;
 
   const textColorClass = isSolid
     ? "text-foreground/80 hover:text-primary"
     : "text-white/90 hover:text-white";
-  const logoColorClass = isSolid ? "text-primary" : "text-white";
   const underlineClass = isSolid ? "bg-primary" : "bg-white";
   const langButtonClass = isSolid
     ? "text-foreground/80 hover:text-primary border-border hover:border-primary bg-card"
@@ -104,17 +95,22 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           <Link href={`/${locale}`} className="shrink-0 relative z-50">
-            <motion.span
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`block text-3xl font-serif font-bold tracking-tighter transition-colors duration-300 ${logoColorClass} ${
-                locale === "ar" ? "font-arabic-title" : ""
-              }`}
+              className="relative h-20 w-auto"
             >
-              FUAR
-            </motion.span>
+              <Image
+                src={isSolid ? "/logo-black.svg" : "/logo-white.svg"}
+                alt="FUAR Logo"
+                width={220}
+                height={80}
+                priority
+                className="h-20 w-auto object-contain transition-all duration-300"
+              />
+            </motion.div>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -207,7 +203,7 @@ export default function Navbar() {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="md:hidden fixed top-20 left-0 w-full bg-background border-t border-border overflow-hidden"
+            className="md:hidden fixed top-24 left-0 w-full bg-background border-t border-border overflow-hidden"
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => {
